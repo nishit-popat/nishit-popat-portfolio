@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nishit Popat • Software Engineer</title>
+    <meta name="description" content="Portfolio of Nishit Popat — Software Engineer. Experience in Java, Spring Boot, Kafka, AWS, SQS, MongoDB, Angular, and more." />
+    <meta name="theme-color" content="#14b8a6" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind via CDN -->
+    <script>
+      tailwind = undefined;
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+              display: ['Space Grotesk', 'Manrope', 'ui-sans-serif', 'system-ui'],
+            },
+            colors: {
+              brand: {
+                50: '#f0fdfa',
+                100: '#ccfbf1',
+                200: '#99f6e4',
+                300: '#5eead4',
+                400: '#2dd4bf',
+                500: '#14b8a6',
+                600: '#0d9488',
+                700: '#0f766e',
+                800: '#115e59',
+                900: '#134e4a',
+              },
+            },
+            boxShadow: {
+              glow: '0 0 0 6px rgb(20 184 166 / 0.18)',
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Focus ring */
+      :focus-visible { outline: 2px solid #10b981; outline-offset: 2px; }
+      /* Smooth fade for images */
+      img { transition: opacity .4s ease; }
+      /* Hide ScrollTrigger markers if accidentally enabled */
+      .gsap-marker-start, .gsap-marker-end { display: none !important; }
+      /* Nav underline micro-interaction */
+      .nav-link { position: relative; }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0; bottom: -4px;
+        height: 2px; width: 100%;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform .25s ease;
+        opacity: .6;
+      }
+      .nav-link:hover::after { transform: scaleX(1); }
+      /* Typewriter caret */
+      .caret { border-right: 2px solid currentColor; margin-left: 2px; }
+      @keyframes caret-blink { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+      .caret-blink { animation: caret-blink 1s steps(1, end) infinite; }
+      /* Reveal on scroll */
+      .reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
+      .reveal.in-view { opacity: 1; transform: translateY(0); }
+      /* Skill icon chips */
+      .icon-chip img { width: 20px; height: 20px; display: inline-block; vertical-align: -4px; filter: grayscale(1); opacity: .9; }
+      .icon-chip:hover img { filter: none; opacity: 1; }
+      /* Show skill labels on mobile as well (override hidden sm:inline) */
+      .icon-chip .hidden { display: inline !important; }
+    </style>
+
+    <script>
+      // Initialize theme early to avoid flash
+      (function initTheme() {
+        try {
+          const saved = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
+          else document.documentElement.classList.remove('dark');
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='70' text-anchor='middle' font-size='64'%3EN%3C/text%3E%3C/svg%3E" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nishit Popat",
+        "jobTitle": "Software Engineer",
+        "email": "mailto:nishitpopat15@gmail.com",
+        "telephone": "+91-76986-28029",
+        "url": "https://nishit-popat.dev",
+        "sameAs": [
+          "https://www.linkedin.com/in/nishit-popat"
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-zinc-50 text-zinc-800 dark:bg-zinc-900 dark:text-zinc-100 font-sans antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-brand-600 focus:text-white focus:px-3 focus:py-2 focus:rounded">Skip to content</a>
+
+    <!-- Header / Nav -->
+    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-zinc-900/60 border-b border-zinc-200/60 dark:border-zinc-800/60">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div id="scrollProgress" class="absolute left-0 -bottom-px h-[2px] bg-brand-600 w-0"></div>
+        <div class="flex items-center justify-between h-16 transition-[height,_padding] duration-300 will-change-auto" id="headerBar">
+          <a href="#home" class="flex items-center gap-2 font-extrabold text-xl">
+            <span class="inline-flex h-2 w-2 rounded-full bg-brand-600 transition-transform duration-300 group-hover:scale-125"></span>
+            <span class="text-base sm:text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 font-display">nishit<span class="text-zinc-400">-</span>popat</span>
+          </a>
+          <nav class="hidden md:flex items-center gap-6 text-sm relative">
+            <span id="navIndicator" class="absolute -bottom-1 h-[2px] bg-brand-600 rounded-full transition-all duration-300 ease-out" style="left:0;width:0;opacity:.7"></span>
+            <a href="#recommendations" class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100">Recommendations</a>
+            <a href="#skills" class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100">Skills</a>
+            <a href="#experience" class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100">Experience</a>
+            <a href="#projects" class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100">Projects</a>
+            <a href="#education" class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100">Education</a>
+            <a href="#contact" class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100">Contact</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <button id="themeToggle" class="inline-flex items-center justify-center h-9 w-9 rounded-md ring-1 ring-zinc-300 dark:ring-zinc-700 bg-white text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:ring-zinc-400 active:bg-zinc-100" aria-label="Toggle dark mode" title="Toggle theme">
+              <!-- Sun (outline) shown in dark mode to indicate switch to light -->
+              <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 hidden" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+              </svg>
+              <!-- Moon (outline) shown in light mode to indicate switch to dark -->
+              <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+            <button id="mobileMenuBtn" class="md:hidden inline-flex items-center justify-center h-9 w-9 rounded-md border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Open menu">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5"><path fill="currentColor" d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden py-3 border-t border-zinc-200 dark:border-zinc-800 text-sm">
+          <div class="flex flex-col gap-2">
+            <a href="#skills" class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100">Skills</a>
+            <a href="#experience" class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100">Experience</a>
+            <a href="#projects" class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100">Projects</a>
+            <a href="#recommendations" class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100">Recommendations</a>
+            <a href="#education" class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100">Education</a>
+            <a href="#contact" class="nav-link hover:text-zinc-900 dark:hover:text-zinc-100">Contact</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section id="home" class="relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div class="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 items-center">
+            <div>
+              <p class="text-sm uppercase tracking-widest text-zinc-500 font-semibold mb-4 reveal">Think • Build  • Deploy</p>
+              <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-6 reveal font-display" aria-label="Hi, I'm Nishit Popat.">
+                <span id="typedText"></span>
+                <span id="typedCaret" class="caret caret-blink" aria-hidden="true"></span>
+              </h1>
+              <p class="text-lg text-zinc-800 dark:text-zinc-300 mb-8 max-w-2xl reveal">An Engineer and problem-solver dedicated to creating robust and scalable solutions. This involves architecting reliable data pipelines and cloud infrastructure and designing high-performance APIs.  The focus is always on delivering powerful systems that drive success, working alongside teams to improve products and increase business efficiency.</p>
+              <div class="flex flex-wrap items-center gap-3 reveal">
+                <a href="#projects" class="inline-flex items-center gap-2 rounded-md bg-brand-600 text-white px-4 py-2 hover:bg-brand-700 active:bg-brand-700/90 transition-all shadow-sm hover:shadow-glow focus:shadow-glow">
+                  <span>View Projects</span>
+                </a>
+        
+                <a href="https://www.linkedin.com/in/nishit-popat" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-md border border-zinc-300 dark:border-zinc-700 px-4 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 active:bg-zinc-200/60">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05C19.9 8 22 10 22 13.7V23h-4v-8.2c0-2-1-3.3-2.8-3.3-1.3 0-2.1.87-2.45 1.72-.12.29-.15.69-.15 1.09V23h-4V8z"/></svg>
+                  <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/nishit-popat" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-md border border-zinc-300 dark:border-zinc-700 px-4 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 active:bg-zinc-200/60">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.1-1.49-1.1-1.49-.9-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.67.35-1.11.63-1.36-2.22-.26-4.55-1.14-4.55-5.09 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.2 9.2 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.42.21 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.96-2.34 4.82-4.57 5.08.36.33.68.97.68 1.96 0 1.42-.01 2.56-.01 2.9 0 .27.18.6.69.49A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2z" clip-rule="evenodd"/></svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+              <div class="mt-6 text-sm text-zinc-500 dark:text-zinc-400 reveal">Rajkot, Gujarat</div>
+            </div>
+            <div class="relative sm:justify-self-end reveal">
+              <div class="relative hero-card rounded-2xl ring-1 ring-zinc-200/70 dark:ring-zinc-800/80 p-1 bg-white/60 dark:bg-zinc-900/50 backdrop-blur will-change-transform">
+                <img src="assets/profile3.jpg" alt="Portrait of Nishit Popat" class="h-80 w-80 sm:h-96 sm:w-96 object-cover rounded-xl" loading="eager" onerror="this.onerror=null;this.src='assets/profile.jpg';" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommendations -->
+      <section id="recommendations" class="py-12 sm:py-16 bg-zinc-50 dark:bg-zinc-900/40">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-2xl font-bold mb-8 reveal font-display">Recommendations</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <figure class="p-6 rounded-xl ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white/60 dark:bg-zinc-900/50 backdrop-blur reveal">
+              <blockquote class="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
+                “I had the pleasure of working with Nishit Popat for two years at Lumos Integration, where he played a pivotal role in developing a hybrid backend architecture combining RESTful APIs and socket-based communication to support complex vibration signal analysis with AI. Nishit is a remarkably steady and dependable developer who demonstrates strong technical skills and an exceptional ability to follow through on challenging tasks. His consistent reliability and collaborative spirit made him an invaluable part of our team. I highly recommend Nishit for any advanced software development or systems integration role.”
+              </blockquote>
+              <figcaption class="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
+                — <a href="https://www.linkedin.com/in/louis-oh-318a04113/" target="_blank" rel="noopener" class="underline hover:text-zinc-700 dark:hover:text-zinc-300">Louis Oh</a>, Lumos Integration
+              </figcaption>
+            </figure>
+            <figure class="p-6 rounded-xl ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white/60 dark:bg-zinc-900/50 backdrop-blur reveal">
+              <blockquote class="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
+                “I had the privilege of working closely with Nishit during their time as a software engineer at Crest Data Systems. Their technical prowess and problem-solving skills consistently stood out, as he adeptly tackled complex challenges and delivered top-notch code. Nishit's collaborative nature enriched our team dynamics, and his proactive approach to learning and adapting to new technologies showcased his commitment to growth. His effective communication and positive attitude made him a valuable asset, and I am confident that he will excel in any software engineering role.”
+              </blockquote>
+              <figcaption class="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
+                — <a href="https://www.linkedin.com/in/parthiv-shah/" target="_blank" rel="noopener" class="underline hover:text-zinc-700 dark:hover:text-zinc-300">Parthiv Shah</a>, Crest Data Systems
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      
+
+      <!-- Skills -->
+      <section id="skills" class="py-12 sm:py-16 bg-zinc-50 dark:bg-zinc-900/40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-2xl font-bold mb-8 reveal font-display">Technical Skills</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-6 rounded-xl ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white/60 dark:bg-zinc-900/50 backdrop-blur reveal">
+              <div class="font-semibold mb-3">Languages</div>
+              <div class="flex flex-wrap gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/java.svg" alt="Java" width="20" height="20"/>
+                  <span class="hidden sm:inline">Java</span>
+                </span>
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/python.svg" alt="Python" width="20" height="20"/>
+                  <span class="hidden sm:inline">Python</span>
+                </span>
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/typescript.svg" alt="TypeScript" width="20" height="20"/>
+                  <span class="hidden sm:inline">TypeScript</span>
+                </span>
+              </div>
+            </div>
+            <div class="p-6 rounded-xl ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white/60 dark:bg-zinc-900/50 backdrop-blur reveal">
+              <div class="font-semibold mb-3">Frameworks</div>
+              <div class="flex flex-wrap gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/spring.svg" alt="Spring" width="20" height="20"/>
+                  <span class="hidden sm:inline">Spring</span>
+                </span>
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/springboot.svg" alt="Spring Boot" width="20" height="20"/>
+                  <span class="hidden sm:inline">Spring Boot</span>
+                </span>
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/fastapi.svg" alt="FastAPI" width="20" height="20"/>
+                  <span class="hidden sm:inline">FastAPI</span>
+                </span>
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/Angular.svg" alt="Angular" width="20" height="20"/>
+                  <span class="hidden sm:inline">Angular</span>
+                </span>
+              </div>
+            </div>
+            <div class="p-6 rounded-xl ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white/60 dark:bg-zinc-900/50 backdrop-blur reveal">
+              <div class="font-semibold mb-3">Cloud / DevOps</div>
+              <div class="flex flex-wrap gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/AWS.svg" alt="AWS" width="20" height="20"/>
+                  <span class="hidden sm:inline">AWS</span>
+                </span>
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/Docker.svg" alt="Docker" width="20" height="20"/>
+                  <span class="hidden sm:inline">Docker</span>
+                </span>
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/Railway_Logo.svg" alt="Railway" width="20" height="20"/>
+                  <span class="hidden sm:inline">Railway</span>
+                </span>
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/GitHub_Actions.svg" alt="GitHub Actions" width="20" height="20"/>
+                  <span class="hidden sm:inline">GitHub Actions</span>
+                </span>
+              </div>
+            </div>
+            <div class="p-6 rounded-xl ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white/60 dark:bg-zinc-900/50 backdrop-blur reveal">
+              <div class="font-semibold mb-3">Data / Streaming</div>
+              <div class="flex flex-wrap gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/Apache%20Kafka.svg" alt="Kafka" width="20" height="20"/>
+                  <span class="hidden sm:inline">Kafka</span>
+                </span>
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/Amazon_SQS.svg" alt="Amazon SQS" width="20" height="20"/>
+                  <span class="hidden sm:inline">Amazon SQS</span>
+                </span>
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/openlineage.svg" alt="OpenLineage" width="20" height="20"/>
+                  <span class="hidden sm:inline">OpenLineage</span>
+                </span>
+              </div>
+            </div>
+            <div class="p-6 rounded-xl ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white/60 dark:bg-zinc-900/50 backdrop-blur reveal">
+              <div class="font-semibold mb-3">Databases</div>
+              <div class="flex flex-wrap gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/MongoDB.svg" alt="MongoDB" width="20" height="20"/>
+                  <span class="hidden sm:inline">MongoDB</span>
+                </span>
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/PostgresSQL.svg" alt="PostgreSQL" width="20" height="20"/>
+                  <span class="hidden sm:inline">PostgreSQL</span>
+                </span>
+                <span class="icon-chip inline-flex items-center gap-2 px-2 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 ring-1 ring-transparent hover:ring-brand-300">
+                  <img src="assets/icons/Redis.svg" alt="Redis" width="20" height="20"/>
+                  <span class="hidden sm:inline">Redis</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="py-12 sm:py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-2xl font-bold mb-8 reveal font-display">Experience</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <article class="p-6 rounded-xl ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white/60 dark:bg-zinc-900/50 backdrop-blur reveal">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="font-semibold">Software Engineer — <a href="https://otelier.io" target="_blank" rel="noopener" class="hover:underline">Otelier</a></h3>
+                  <p class="text-sm text-zinc-500 dark:text-zinc-400">Remote • Aug 2023 – Present</p>
+                </div>
+                <a href="https://otelier.io" target="_blank" rel="noopener" class="shrink-0 opacity-80 hover:opacity-100 transition" aria-label="Visit Otelier website">
+                  <img src="assets/icons/otelier.svg" alt="Otelier logo" class="h-6 w-auto" loading="lazy" onerror="this.style.display='none'"/>
+                </a>
+              </div>
+              <ul class="mt-4 list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-300 text-sm">
+                <li>Architected and optimized batch data pipelines to process 10k+ daily emails, reducing parsing errors by 50%.</li>
+                <li>Improved data observability and reliability by implementing OpenLineage and integrating/auditing AWS SQS event flows.</li>
+                <li>Orchestrated Kafka integrations for 4 products and contributed to core features used by over 5k daily active users.</li>
+                <li>Developed user-facing Angular components to enhance UX and decision-making.</li>
+              </ul>
+              <div class="mt-4 text-xs text-zinc-500 dark:text-zinc-400">Java, Spring Boot, MongoDB, Kafka, Amazon SQS, Angular, TypeScript, OpenLineage</div>
+            </article>
+
+            <article class="p-6 rounded-xl ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white/60 dark:bg-zinc-900/50 backdrop-blur reveal">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h3 class="font-semibold">Software Engineer — <a href="https://www.crestdatasys.com" target="_blank" rel="noopener" class="hover:underline">Crest Data Systems</a></h3>
+                  <p class="text-sm text-zinc-500 dark:text-zinc-400">Ahmedabad, Gujarat • Dec 2021 – Aug 2023</p>
+                </div>
+                <a href="https://www.crestdatasys.com" target="_blank" rel="noopener" class="shrink-0 opacity-80 hover:opacity-100 transition" aria-label="Visit Crest Data Systems website">
+                  <img src="assets/icons/crest_data.webp" alt="Crest Data Systems logo" class="h-6 w-auto" loading="lazy" onerror="this.style.display='none'"/>
+                </a>
+              </div>
+              <ul class="mt-4 list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-300 text-sm">
+                <li>Engineered high-throughput microservices for SIEM, enabling zero-downtime blue-green deployments.</li>
+                <li>Delivered a FIPS-compliant security connector and optimized async REST APIs, improving system responsiveness and security.</li>
+                <li>Shipped multiple plugins for Jenkins and Jira to streamline build automation and ticketing workflows.</li>
+                <li>Mentored junior engineers and led the design and delivery of a scalable Jira On-Cloud integration during the internship.</li>
+              </ul>
+              <div class="mt-4 text-xs text-zinc-500 dark:text-zinc-400">Java, Spring Boot, Kafka, PostgreSQL, Elasticsearch, Docker, Redis, Jenkins</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="py-12 sm:py-16 bg-zinc-50 dark:bg-zinc-900/40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-bold reveal font-display">Projects</h2>
+            </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <article class="p-6 rounded-xl ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white/60 dark:bg-zinc-900/50 backdrop-blur reveal">
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="font-semibold">NHive — IoT Smart Sensor Monitoring</h3>
+                <a href="https://www.lumosintegrationllc.com/" target="_blank" rel="noopener" aria-label="Open NHive (Lumos) website">
+                  <img src="assets/icons/Lumos.svg" alt="NHive logo" class="h-7 w-24 object-contain object-center" loading="lazy"/>
+                </a>
+              </div>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Java, Spring, Kafka, Python, TensorFlow, Docker, MongoDB</p>
+              <ul class="mt-3 list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-300 text-sm">
+                <li>Architected an IoT platform handling 10k+ events/sec; applied signal processing + TensorFlow for 80% anomaly accuracy.</li>
+                <li>Exposed REST APIs & WebSockets for real-time visualization; added caching for low-latency reads.</li>
+                <li>Led end-to-end delivery (ingestion, training, infra, AWS EC2 deployment) for scalable ops.</li>
+              </ul>
+            </article>
+            <article class="p-6 rounded-xl ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white/60 dark:bg-zinc-900/50 backdrop-blur reveal">
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="font-semibold">Agri Patrak — Commission Management PWA</h3>
+                <a href="https://patrak-frotend-production.up.railway.app/" target="_blank" rel="noopener" aria-label="Open Agri Patrak website">
+                  <img src="assets/icons/agri-patrak.png" alt="Agri Patrak logo" class="h-7 w-32 object-contain object-center" loading="lazy"/>
+                </a>
+              </div>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400">Java, Spring Boot, React.js, PostgreSQL</p>
+              <ul class="mt-3 list-disc pl-5 space-y-2 text-zinc-700 dark:text-zinc-300 text-sm">
+                <li>Built a Progressive Web App for commission tracking, adopted by 25+ brokers.</li>
+                <li>Owned the end-to-end solution (API design, schema, UI, deployment), reducing errors and reconciliation time.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="py-12 sm:py-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="text-2xl font-bold mb-6 reveal font-display">Education</h2>
+          <div class="p-6 rounded-xl ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white/60 dark:bg-zinc-900/50 backdrop-blur reveal">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <div>
+                <div class="font-semibold">Charusat University — B.Tech, Computer Engineering</div>
+                <div class="text-sm text-zinc-500 dark:text-zinc-400">Anand, Gujarat • 2018 – 2022</div>
+              </div>
+              <div class="text-sm font-medium">CGPA: 9.7/10</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="py-16 sm:py-20 pb-24 scroll-mt-24">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-xl font-semibold mb-4 reveal font-display">Let’s turn ideas into production-grade systems
+        </h2>
+          <div class="flex items-center justify-center gap-3 reveal">
+            <a href="mailto:nishitpopat15@gmail.com" class="inline-flex items-center gap-2 rounded-md bg-brand-600 text-white px-4 py-2 hover:bg-brand-700">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+                <path d="m3 7 9 6 9-6"></path>
+              </svg>
+              <span>Email</span>
+            </a>
+            <a href="tel:+917698628029" class="inline-flex items-center gap-2 rounded-md bg-zinc-800 text-white px-4 py-2 hover:bg-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v2a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h2a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.6a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.48-1.19a2 2 0 0 1 2.11-.45c.83.29 1.7.5 2.6.62A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>Call</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-6 border-t border-zinc-200 dark:border-zinc-800 text-sm">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="text-zinc-500 dark:text-zinc-400">© <span id="year"></span> Nishit Popat</div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
