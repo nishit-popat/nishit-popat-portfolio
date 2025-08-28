@@ -192,8 +192,28 @@
               <div class="mt-6 text-sm text-zinc-500 dark:text-zinc-400 reveal">Rajkot, Gujarat</div>
             </div>
             <div class="relative sm:justify-self-end reveal">
-              <div class="relative hero-card rounded-2xl ring-1 ring-zinc-200/70 dark:ring-zinc-800/80 p-1 bg-white/60 dark:bg-zinc-900/50 backdrop-blur will-change-transform">
-                <img src="assets/profile3.jpg" alt="Portrait of Nishit Popat" class="h-80 w-80 sm:h-96 sm:w-96 object-cover rounded-xl" loading="eager" onerror="this.onerror=null;this.src='assets/profile.jpg';" />
+              <div class="relative hero-card rounded-2xl ring-1 ring-zinc-200/70 dark:ring-zinc-800/80 p-1 bg-white/60 dark:bg-zinc-900/50 backdrop-blur will-change-transform max-w-[420px] mx-auto sm:mx-0">
+                <picture>
+                  <source type="image/avif" srcset="
+                    assets/profile3-480.avif 480w,
+                    assets/profile3-768.avif 768w,
+                    assets/profile3-1200.avif 1200w">
+                  <source type="image/webp" srcset="
+                    assets/profile3-480.webp 480w,
+                    assets/profile3-768.webp 768w,
+                    assets/profile3-1200.webp 1200w">
+                  <img
+                    src="assets/profile3-768.jpg"
+                    srcset="
+                      assets/profile3-480.jpg 480w,
+                      assets/profile3-768.jpg 768w,
+                      assets/profile3-1200.jpg 1200w"
+                    sizes="(min-width: 640px) 24rem, 100vw"
+                    width="768" height="768"
+                    alt="Portrait of Nishit Popat"
+                    class="w-full h-auto sm:h-96 sm:w-96 object-cover rounded-xl"
+                    loading="eager" />
+                </picture>
               </div>
             </div>
           </div>
